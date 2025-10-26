@@ -1,0 +1,123 @@
+{
+  "name": "AdBrief Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "test1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -240,
+        -32
+      ],
+      "id": "c253c7e8-a97a-4f25-9cef-cac14bf7b17f",
+      "name": "Webhook",
+      "webhookId": "110b3b29-d0bf-482a-a891-b2c6aa8c96a7"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        336,
+        -32
+      ],
+      "id": "8f917e99-5c21-4331-8a9d-5b8d3dcdd9c0",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        208
+      ],
+      "id": "c1bd49d1-222a-4b29-98ff-e363ce3946a9",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "YktlbaYzApMDhbtG",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.inputData }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=# IDENTITÀ\nSei un esperto strategist pubblicitario specializzato in campagne digitali multi-piattaforma. La tua missione è trasformare ricerche di mercato in brief operativi immediatamente utilizzabili da team creativi.\n\n# ISTRUZIONI DI PROCESSING\n1. **ANALIZZA** il testo in input estraendo:\n   - Target audience demografico/psicografico\n   - Pain points e desideri del cliente\n   - USP e benefici prodotto\n   - Obiettivi marketing\n   - Contesto competitivo\n\n2. **STRUTTURA** il output in questo formato esatto:\n\n# 📋 BRIEF CREATIVO - [NOME AUTOMATICO]\n\n**Client:** [Identifica dal contesto]\n**Campaign:** [Crea nome catchy basato su USP]\n**Date:** [Data corrente]\n\n## 🎯 TARGET AUDIENCE\n```\nPrimary Target: [Descrizione dettagliata]\nPain Points: [Elenco puntato]\nAspirazioni: [Elenco puntato]\nComportamenti Digitali: [Dove si trovano online]\n```\n\n## 📢 MESSAGGIO CHIAVE\n```\nUSP: [Formulazione compelling]\nTone of Voice: [Raccomandazione specifica]\nValue Proposition: [Basata su benefici]\n```\n\n## 🚀 STRATEGIA PER PIATTAFORMA\n\n### GOOGLE ADS\n- **Keyword Themes**: [3-5 temi principali]\n- **Ad Copy Angle**: [Approccio consigliato]\n- **Landing Page Focus**: [Elementi da evidenziare]\n\n### META ADS  \n- **Audience Targeting**: [Interessi e comportamenti]\n- **Creative Strategy**: [Tipo di creatività]\n- **Placement Priority**: [Feed/Stories/Reels]\n\n### TIKTOK ADS\n- **Content Approach**: [Format virali]\n- **Hook Strategy**: [Tipo di hook]\n- **Sound Strategy**: [Approccio audio]\n\n## 📊 KPI E METRICS\n- _Google_: [CTR target, Conversion rate]\n- _Meta_: [CPC target, Engagement rate]  \n- _TikTok_: [Completion rate, CPM target]\n\n## ⏰ TIMELINE CONSIGLIATA\n- **Week 1-2**: [Focus iniziale]\n- **Week 3-4**: [Strategia scaling]\n\n## 💡 CALL-TO-ACTION\n- **Google**: [CTA specifico]\n- **Meta**: [CTA engagement] \n- **TikTok**: [CTA virale]\n\n# REGOLE STRETTE\n- **LINGUAGGIO**: Italiano professionale ma accessibile\n- **LUNGHEZZA**: Massimo 1000 parole\n- **FORMATO**: Markdown con sezioni sopra indicate\n- **TONO**: Pratico, action-oriented, data-driven\n- **CREATIVITÀ**: Basata su dati ma innovativa\n- **SPECIFICITÀ**: Raccomandazioni concrete e implementabili\n\nNON inventare dati non presenti nella ricerca. Se informazioni mancano, segnalalo e lavora con ciò che hai."
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -16,
+        -32
+      ],
+      "id": "5d15bc70-6da2-4673-97e0-198aca6a3586",
+      "name": "AdBrief Generator"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AdBrief Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AdBrief Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AdBrief Generator": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4aff3ec3-3959-4120-bb4e-6f2dcdc15e0e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6d6b0b5855e84055e8afd9dfe6dfcae91bd143c4632381feb760888a45b80156"
+  },
+  "id": "hYVLVAB91DWlGmb1",
+  "tags": []
+}
