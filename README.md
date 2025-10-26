@@ -113,3 +113,113 @@ Contenuti principali del prompt:
 ## 🧾 Esempio di input/output
 
 ### Input (via POST)
+
+{
+  "inputData": "Analisi brand: GreenWave produce abbigliamento sportivo sostenibile. Target 25-40 anni, urbano e attento all’ambiente. USP: materiali riciclati, design minimalista. Obiettivo: awareness + vendite online."
+}
+
+### Output (Markdown)
+
+# 📋 BRIEF CREATIVO - GreenWave Momentum
+
+**Client:** GreenWave  
+**Campaign:** “Muoviti in modo sostenibile”  
+**Date:** 26/10/2025  
+
+## 🎯 TARGET AUDIENCE
+
+Primary Target: Giovani adulti (25-40 anni), urbani e attenti alla sostenibilità
+Pain Points: Mancanza di alternative eco-fashion accessibili
+Aspirazioni: Stile, etica, autenticità
+Comportamenti Digitali: Instagram, TikTok, YouTube Fitness
+
+
+## 📢 MESSAGGIO CHIAVE
+
+USP: Abbigliamento sportivo 100% riciclato
+Tone of Voice: Naturale, motivazionale, positivo
+Value Proposition: Stile che rispetta l’ambiente senza rinunciare alle performance
+
+
+## 🚀 STRATEGIA PER PIATTAFORMA
+
+### GOOGLE ADS
+- **Keyword Themes:** moda sostenibile, abbigliamento ecologico, green fitness  
+- **Ad Copy Angle:** prestazioni + sostenibilità  
+- **Landing Page Focus:** materiali riciclati, certificazioni, comfort  
+
+### META ADS  
+- **Audience Targeting:** interessi in eco-lifestyle e sport  
+- **Creative Strategy:** immagini naturali, colori neutri, storytelling visivo  
+- **Placement Priority:** Instagram Reels, Facebook Feed  
+
+### TIKTOK ADS  
+- **Content Approach:** video “before/after” moda fast fashion → green fashion  
+- **Hook Strategy:** “Non serve scegliere tra stile e sostenibilità”  
+- **Sound Strategy:** musica pop soft + suoni naturali  
+
+## 📊 KPI E METRICS
+- _Google_: CTR > 4%, Conversion Rate > 3%  
+- _Meta_: CPC < €0.50, Engagement > 6%  
+- _TikTok_: Completion Rate > 70%, CPM < €3  
+
+## ⏰ TIMELINE CONSIGLIATA
+- **Week 1-2:** awareness e storytelling  
+- **Week 3-4:** scaling su audience lookalike  
+
+## 💡 CALL-TO-ACTION
+- **Google:** Scopri la collezione  
+- **Meta:** Acquista ora  
+- **TikTok:** Unisciti al movimento #GreenWave  
+
+---
+
+## 🔐 Credenziali richieste
+
+| Servizio                 | Tipo credenziale | Descrizione                                  |
+| ------------------------ | ---------------- | -------------------------------------------- |
+| Google Gemini (PaLM API) | googlePalmApi  | Accesso al modello LLM per generazione testo |
+
+---
+
+## 🧪 Test e Debugging
+
+Puoi testare il workflow localmente o su server con una chiamata HTTP:
+
+curl -X POST https://<TUO_DOMINIO_N8N>/webhook/test1 \
+  -H "Content-Type: application/json" \
+  -d '{
+        "inputData": "Analisi del mercato fitness tech in Europa 2025, con focus su wearable e app di performance..."
+      }'
+
+La risposta sarà un file di testo in formato Markdown contenente il brief completo.
+
+---
+
+## 🧰 Requisiti tecnici
+
+* n8n ≥ 1.50
+* Plugin LangChain abilitato
+* Credenziale attiva per Google Gemini API
+* Connettività HTTPS per Webhook
+
+---
+
+## 🚀 Possibili estensioni
+
+* Aggiungere un nodo Save to Google Docs / Notion / Airtable
+* Creare un nodo Email Send per inviare il brief al team creativo
+* Integrazione con Slack per notifiche automatiche
+* Aggiungere una fase di revisione AI per migliorare tono e consistenza
+
+---
+
+## 🏁 Conclusione
+
+AdBrief Generator è una soluzione di automazione strategica per team marketing e creativi:
+trasforma dati e analisi in brief concreti, pronti all’uso e coerenti con i canali pubblicitari più importanti.
+
+> 💡 In pochi secondi, da analisi grezza a piano creativo operativo.
+> 100% personalizzabile, scalabile e integrabile con qualsiasi ecosistema AI o CRM.
+
+---
